@@ -177,8 +177,15 @@ console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
  */
 function removeAndDouble(arr, startIdx) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return 'Вхідний параметр має бути масивом';
+  }
+
   // За допомогою методу splice() видаляємо елементи масиву починаючи з заданого індексу.
+  arr.splice(startIdx);
+
   // За допомогою методу map() подвоюємо кожен елемент масиву.
+  return arr.map(element => element * 2);
   // Повертаємо масив подвоєних елементів.
 }
 
@@ -195,9 +202,15 @@ console.log(removeAndDouble([1, 2, 3, 4, 5], 2)); // Виведе [ 2, 4 ]
  */
 function sumAndPrint(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return 'Вхідний параметр має бути масивом';
+  }
   // За допомогою методу reduce() обчислюємо суму елементів масиву.
+  const sum = arr.reduce((acc, current) => acc + current, 0);
   // За допомогою методу forEach() виводимо кожен елемент масиву в консоль.
+ arr.forEach(element => console.log(element));
   // Повертаємо суму елементів масиву.
+  return sum;
 }
 
 console.log("Завдання: 8  ==============================");
@@ -220,10 +233,17 @@ console.log(sumAndPrint([1, 2, 3, 4, 5])); // Виведе
  */
 function flattenSquareAndFilter(arr, threshold) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+ if (!Array.isArray(arr)){
+  return 'Вхідний параметр має бути масивом';
+ }
   // За допомогою методу flat() вирівнюємо масив.
+  const flattenedArray = arr.flat();
   // За допомогою методу map() підносимо кожен елемент масиву до квадрату.
+  const squaredArray = flattenedArray.map(element => element * element);
   // За допомогою методу filter() фільтруємо елементи, які більше за порогове значення.
+  const filteredSquaredArray = squaredArray.filter(element => element > threshold);
   // Повертаємо вирівняний масив, елементи якого підняті до квадрату і профільтровані.
+  return filteredSquaredArray;
 }
 
 console.log("Завдання: 9 ==============================");
